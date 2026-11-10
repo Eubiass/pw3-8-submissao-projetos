@@ -1,0 +1,47 @@
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.lista-projetos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card-projeto {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.card-projeto h2 {
+  color: #333;
+  margin-top: 0;
+}
+
+.card-projeto p {
+  color: #555;
+  margin: 10px 0;
+}
+
+.card-projeto button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 9px 16px;
+  cursor: pointer;
+}
+
+.card-projeto button:hover {
+  background-color: #bb2d3b;
+}
