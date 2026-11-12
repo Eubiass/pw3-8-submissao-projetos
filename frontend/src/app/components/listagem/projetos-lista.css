@@ -1,0 +1,128 @@
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+h1 {
+  color: #333;
+}
+
+.lista-projetos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card-projeto {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.card-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.card-projeto h2 {
+  color: #333;
+  margin-top: 0;
+}
+
+.card-projeto p {
+  color: #555;
+  margin: 10px 0;
+}
+
+.status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.pendente {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.aprovado {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.revisar {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.acoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.acoes button,
+.btn-novo {
+  border: none;
+  border-radius: 5px;
+  padding: 9px 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-novo {
+  background-color: #2563eb;
+  color: white;
+}
+
+.btn-editar {
+  background-color: #2563eb;
+  color: white;
+}
+
+.btn-avaliar {
+  background-color: #198754;
+  color: white;
+}
+
+.btn-excluir {
+  background-color: #dc3545;
+  color: white;
+}
+
+.acoes button:hover,
+.btn-novo:hover {
+  opacity: 0.85;
+}
+
+.mensagem-vazia {
+  color: #666;
+  text-align: center;
+  padding: 30px;
+}
+
+@media (max-width: 600px) {
+  .cabecalho {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .acoes {
+    flex-wrap: wrap;
+  }
+}

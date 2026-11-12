@@ -1,0 +1,40 @@
+<div class="container">
+  <h1>{{ idProjeto === null ? 'Novo projeto' : 'Editar projeto' }}</h1>
+
+  @if (!carregando) {
+    <form [formGroup]="formulario" (ngSubmit)="salvar()">
+
+      <div class="campo">
+        <label for="titulo">Título do projeto</label>
+        <input id="titulo" type="text" formControlName="titulo" placeholder="Digite o título do projeto" />
+
+        @if ( formulario.get('titulo')?.invalid && formulario.get('titulo')?.touched) {
+          <span class="erro">O título é obrigatório.</span>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="areaConhecimento">Área de conhecimento</label>
+        <input id="areaConhecimento" type="text" formControlName="areaConhecimento" placeholder="Digite a área de conhecimento" />
+
+        @if ( formulario.get('areaConhecimento')?.invalid && formulario.get('areaConhecimento')?.touched ) {
+          <span class="erro">
+            A área de conhecimento é obrigatória.
+          </span>
+        }
+      </div>
+
+      <div class="acoes">
+        <button type="submit" class="btn-salvar">
+          Salvar
+        </button>
+
+        <button type="button" class="btn-cancelar" (click)="cancelar()">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  } @else {
+    <p>Carregando projeto...</p>
+  }
+</div>

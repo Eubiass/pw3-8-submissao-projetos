@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="cabecalho">
+    <h1>Projetos cadastrados</h1>
+    <button class="btn-novo" routerLink="/projetos/novo">Novo projeto</button>
+  </div>
+
+  <div class="lista-projetos">
+    @for (projeto of projetos; track projeto.id) {
+
+      <div class="card-projeto">
+        <div class="card-cabecalho">
+          <h2>{{ projeto.titulo }}</h2>
+
+          <span
+            class="status" [class.pendente]="projeto.status === 'PENDENTE'"
+            [class.aprovado]="projeto.status === 'APROVADO'"
+            [class.revisar]="projeto.status === 'REVISAR'">
+            {{ projeto.status }}
+          </span>
+        </div>
+
+        <p><strong>Área de conhecimento:</strong>{{ projeto.areaConhecimento }}</p>
+        <p><strong>Média final:</strong>{{ projeto.mediaFinal ?? 'Ainda não avaliado' }}</p>
+
+        <div class="acoes">
+          <button class="btn-editar" [routerLink]="['/projetos', projeto.id, 'editar']">
+            Editar
+          </button>
+
+          <button class="btn-avaliar" (click)="avaliarProjeto(projeto.id!)">
+            Avaliar
+          </button>
+
+          <button class="btn-excluir" (click)="excluirProjeto(projeto.id!)">
+            Excluir
+          </button>
+        </div>
+      </div>
+    } @empty {
+      <p class="mensagem-vazia">
+        Nenhum projeto cadastrado.
+      </p>
+    }
+  </div>
+</div>
