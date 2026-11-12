@@ -1,9 +1,12 @@
-
 package br.com.etc.beatrizGustavo.submisao.controller;
 
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import java.util.Map;
+import java.util.NoSuchElementException;
 import br.com.etc.beatrizGustavo.submisao.entity.Projeto;
 import br.com.etc.beatrizGustavo.submisao.service.ProjetoService;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -82,5 +85,36 @@ public class ProjetoController {
             Double notaInovacao,
             Double notaApresentacao
     ) {
+    }
+
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String, String>> tratarDadosInvalidos(
+            IllegalArgumentException erro) {
+
+        return ResponseEntity
+                .badRequest()
+                .body(Map.of("mensagem", erro.getMessage()));
+    }
+
+    @ExceptionHandler(NoSuchElementException.class)
+    public ResponseEntity<Map<String, String>> tratarNaoEncontrado(
+            NoSuchElementException erro) {
+
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(Map.of("mensagem", erro.getMessage()));
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Map<String, String>> tratarConflito(
+            DataIntegrityViolationException erro) {
+
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(Map.of(
+                        "mensagem",
+                        "Não foi possível realizar a operação devido a um conflito nos dados."
+                ));
     }
 }

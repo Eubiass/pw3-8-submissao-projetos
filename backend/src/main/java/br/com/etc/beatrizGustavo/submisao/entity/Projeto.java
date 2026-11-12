@@ -1,4 +1,3 @@
-
 package br.com.etc.beatrizGustavo.submisao.entity;
 
 import jakarta.persistence.*;
